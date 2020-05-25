@@ -14,6 +14,8 @@ function App() {
           name="google-site-verification"
           content="Gx1EvYN_thT7bHiq0b2kVFiocB6RbTetFoemmA1hG-8"
         />
+        link =
+        {[{ rel: 'canonical', href: 'https://thomaslnx-vuttr.netlify.app/' }]}
       </Helmet>
       <GlobalStyles />
       <Routes />
