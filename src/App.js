@@ -9,10 +9,7 @@ function App() {
     <>
       <Helmet>
         <title>VUTTR - Very Useful Tool To Remember</title>
-        <meta
-          name="description"
-          content="Bossabox's pro-lancer application project"
-        />
+        <meta name="description" content="Very Useful Tool To Remember" />
       </Helmet>
       <GlobalStyles />
       <Routes />
