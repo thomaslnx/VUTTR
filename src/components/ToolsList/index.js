@@ -21,7 +21,9 @@ function ToolsList() {
 
   useEffect(() => {
     async function tools() {
-      const response = await api.get('/tools');
+      const response = await api.get(
+        'https://thomaslnxvuttr.herokuapp.com/tools'
+      );
 
       if (response.data) {
         setToolList([...toolList, response.data]);
@@ -43,7 +45,7 @@ function ToolsList() {
 
     const listTags = tagArray.map((tag) => tag.trim());
 
-    api.post('https://thomaslnx-vuttr.netlify.app/tools', {
+    api.post('/tools', {
       title: toolname.value,
       link: toollink.value,
       description: tooldescription.value,
@@ -59,6 +61,7 @@ function ToolsList() {
    *** Remove tool based on his ID
    */
   function removeTool(id) {
+    console.log(id);
     const confirmRemoveTool = window.confirm(
       // Refatorar esse trecho de codigo
       'Quer mesmo remover essa ferramenta?'
@@ -84,9 +87,8 @@ function ToolsList() {
     let newList = [];
     setSearch(e.target.value);
 
-    // CODIGO FUNCIONAL
     if (searchInput !== '') {
-      currentList = await api.get('/tools');
+      currentList = await api.get('https://thomaslnxvuttr.herokuapp.com/tools');
 
       newList = currentList.data
         .map((tag) => tag.tags)
