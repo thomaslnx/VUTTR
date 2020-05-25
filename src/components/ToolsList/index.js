@@ -21,9 +21,7 @@ function ToolsList() {
 
   useEffect(() => {
     async function tools() {
-      const response = await api.get(
-        'https://thomaslnxvuttr.herokuapp.com/tools'
-      );
+      const response = await api.get('/tools');
 
       if (response.data) {
         setToolList([...toolList, response.data]);
@@ -36,7 +34,7 @@ function ToolsList() {
   /*
    *** Add tool to fake database
    */
-  function addTool(e) {
+  async function addTool(e) {
     e.preventDefault();
     const formData = e.target;
 
@@ -45,12 +43,16 @@ function ToolsList() {
 
     const listTags = tagArray.map((tag) => tag.trim());
 
-    api.post('/tools', {
-      title: toolname.value,
-      link: toollink.value,
-      description: tooldescription.value,
-      tags: listTags,
-    });
+    await api
+      .post('/tools', {
+        title: toolname.value,
+        link: toollink.value,
+        description: tooldescription.value,
+        tags: listTags,
+      })
+      .then(function (response) {
+        console.log(response);
+      });
 
     PopupboxManager.close();
 
@@ -60,14 +62,13 @@ function ToolsList() {
   /*
    *** Remove tool based on his ID
    */
-  function removeTool(id) {
-    console.log(id);
+  async function removeTool(id) {
     const confirmRemoveTool = window.confirm(
       // Refatorar esse trecho de codigo
       'Quer mesmo remover essa ferramenta?'
     );
     if (confirmRemoveTool === true) {
-      api.delete(`/tools/${id}`);
+      await api.delete(`/tools/${id}`);
     }
 
     window.location.reload();
@@ -88,7 +89,7 @@ function ToolsList() {
     setSearch(e.target.value);
 
     if (searchInput !== '') {
-      currentList = await api.get('https://thomaslnxvuttr.herokuapp.com/tools');
+      currentList = await api.get('/tools');
 
       newList = currentList.data
         .map((tag) => tag.tags)
@@ -197,8 +198,8 @@ function ToolsList() {
       <ToolList>
         {toolList.length > 0 && search === '' ? (
           toolList[0].map((tool) => (
-            <ul>
-              <li key={tool.id}>
+            <ul key={tool.id}>
+              <li>
                 <span className="toolTitle">
                   <a href={tool.link}>{tool.title}</a>
                   <button type="button" onClick={() => removeTool(tool.id)}>
