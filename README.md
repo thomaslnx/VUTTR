@@ -35,6 +35,8 @@
 - ESlint;
 - Prettier;
 
+* React-Helmet for SEO;
+
 - JSON-Server;
 - Deployed with Netlify for front-end and Heroku for a fake back-end using JSON-Server;
 
