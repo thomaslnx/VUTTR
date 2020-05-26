@@ -34,9 +34,8 @@
 - React-Highlight-Words;
 - ESlint;
 - Prettier;
-
-* React-Helmet for SEO;
-
+- React-Helmet for SEO;
+- Kaffeine for the app do not to sleep;
 - JSON-Server;
 - Deployed with Netlify for front-end and Heroku for a fake back-end using JSON-Server;
 
