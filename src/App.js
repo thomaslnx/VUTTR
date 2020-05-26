@@ -9,10 +9,18 @@ function App() {
     <>
       <Helmet>
         <title>VUTTR - Very Useful Tool To Remember</title>
-        <meta name="description" content="Very Useful Tool To Remember" />
+        <meta
+          name="description"
+          content="VUTTR - Very Useful Tool To Remember"
+        />
         <meta
           name="google-site-verification"
           content="Gx1EvYN_thT7bHiq0b2kVFiocB6RbTetFoemmA1hG-8"
+        />
+        <meta name="author" content="Marcos Moura" />
+        <meta
+          name="keywords"
+          content="tools, list, search, add, delete, challenge, bossabox, tag, name"
         />
         <link rel="canonical" href="https://thomaslnx-vuttr.netlify.app/" />
       </Helmet>
